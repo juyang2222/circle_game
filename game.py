@@ -53,8 +53,8 @@ def create_carrot():
 
 cat_radius = 30
 carrot_radius = 17
-circle_radii = [30, 40, 50]
-circle_speeds = [(3, 3), (-4, 4), (5, -5)]
+circle_radii = [30, 40, 40, 50]
+circle_speeds = [(3, 3), (-4, 4), (-4, 4), (5, -5)]
 
 
 cat_center = (screen_width // 2, screen_height // 2)
@@ -211,9 +211,9 @@ def initialize_game():
             random.randint(100, screen_width - 100),
             random.randint(100, screen_height - 100),
         )
-        for _ in range(3)
+        for _ in range(4)
     ]
-    circle_radii = [30, 40, 50]
+    circle_radii = [30, 40, 40, 50]
     circle_circulars = [
         create_circular_image(circle_img, radius) for radius in circle_radii
     ]
