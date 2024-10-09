@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게임 화면</title>
+    <script>
+      function startGame() {
+        fetch("/start-game", { method: "POST" }).then((response) => {
+          if (response.ok) {
+            alert("게임이 실행되었습니다!");
+          } else {
+            alert("게임 실행에 실패했습니다.");
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>게임을 시작하세요!</h1>
+    <p>플레이어가 업로드한 사진이 게임 화면에 표시됩니다.</p>
+    <button onclick="startGame()">게임 시작</button>
+  </body>
+</html>
