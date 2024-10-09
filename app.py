@@ -27,8 +27,8 @@ def index():
         file = request.files["file"]
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            timestamp = int(time.time())  # 현재 시간을 정수형으로 가져오기
-            new_filename = f"{timestamp}_{filename}"  # 타임스탬프와 원래 파일 이름 조합
+            timestamp = int(time.time())
+            new_filename = f"{timestamp}_{filename}"
 
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], new_filename)
             file.save(file_path)
@@ -46,8 +46,7 @@ def start_game():
     uploaded_files = os.listdir(app.config["UPLOAD_FOLDER"])
 
     if uploaded_files:
-        # 타임스탬프를 기준으로 파일 이름을 추출하고 정렬
-        # 파일 이름 예시: "timestamp_filename.png"
+
         uploaded_files.sort(
             key=lambda x: os.path.getmtime(
                 os.path.join(app.config["UPLOAD_FOLDER"], x)
@@ -55,12 +54,10 @@ def start_game():
             reverse=True,
         )
 
-        # 가장 최근 파일 선택
-        most_recent_file = uploaded_files[0]  # 최신 파일
+        most_recent_file = uploaded_files[0]
         file_path = os.path.join(app.config["UPLOAD_FOLDER"], most_recent_file)
 
         try:
-            # game.py 실행, 경로를 인수로 전달
             subprocess.Popen(["python", "game.py", file_path])
             return "게임이 시작됩니다."
         except Exception as e:
@@ -70,6 +67,4 @@ def start_game():
 
 
 if __name__ == "__main__":
-    app.run(
-        host="0.0.0.0", port=8080
-    )  # 포트를 8080으로 설정하고 모든 IP에서 접근 가능하도록 설정
+    app.run(host="0.0.0.0", port=8080)
