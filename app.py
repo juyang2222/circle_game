@@ -70,4 +70,6 @@ def start_game():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(
+        host="0.0.0.0", port=8080
+    )  # 포트를 8080으로 설정하고 모든 IP에서 접근 가능하도록 설정
