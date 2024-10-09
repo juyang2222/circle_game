@@ -35,7 +35,7 @@ def index():
 
             # 업로드된 이미지 경로 설정
             uploaded_image = url_for(
-                "static", filename=f"images/uploaded_image/{filename}"
+                "static", filename=f"images/uploaded_image/{new_filename}"
             )
 
     return render_template("index.html", uploaded_image=uploaded_image)
